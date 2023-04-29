@@ -3,7 +3,7 @@ use std::io;
 #[derive(Debug)]
 enum TemperatureUnit {
     Fahrenheit,
-    Celcius,
+    Celsius,
 }
 
 fn main() {
@@ -33,7 +33,7 @@ fn main() {
 
 fn get_converted_amount(amount: &i32, temp_unit_to: &TemperatureUnit) -> f32 {
     match temp_unit_to {
-        TemperatureUnit::Celcius => fahrenheit_to_celsius(*amount as f32),
+        TemperatureUnit::Celsius => fahrenheit_to_celsius(*amount as f32),
         TemperatureUnit::Fahrenheit => celsius_to_fahrenheit(*amount as f32),
     }
 }
@@ -73,15 +73,15 @@ fn get_amount() -> i32 {
 
 fn get_temperature_unit_from(temp_unit_to: &TemperatureUnit) -> TemperatureUnit {
     match temp_unit_to {
-        TemperatureUnit::Fahrenheit => TemperatureUnit::Celcius,
-        TemperatureUnit::Celcius => TemperatureUnit::Fahrenheit,
+        TemperatureUnit::Fahrenheit => TemperatureUnit::Celsius,
+        TemperatureUnit::Celsius => TemperatureUnit::Fahrenheit,
     }
 }
 
 fn get_temperature_unit_to() -> TemperatureUnit {
     loop {
         println!(
-            "What temperature unit would you like to convert to? Celcius (C) or Fahrenheit (F)?"
+            "What temperature unit would you like to convert to? Celsius (C) or Fahrenheit (F)?"
         );
 
         let mut input = String::new();
@@ -94,7 +94,7 @@ fn get_temperature_unit_to() -> TemperatureUnit {
 
         match input {
             "F" => break TemperatureUnit::Fahrenheit,
-            "C" => break TemperatureUnit::Celcius,
+            "C" => break TemperatureUnit::Celsius,
             _ => {
                 println!("Invalid input");
                 continue;
